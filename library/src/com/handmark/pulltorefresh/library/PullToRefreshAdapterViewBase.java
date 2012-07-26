@@ -368,17 +368,20 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 
 	private boolean isLastItemVisible() {
 		final int count = mRefreshableView.getCount();
-		final int lastVisiblePosition = mRefreshableView.getLastVisiblePosition();
+		int lastVisiblePosition = mRefreshableView.getLastVisiblePosition();
+		int childIndex = lastVisiblePosition - mRefreshableView.getFirstVisiblePosition();
+		if (Mode.BOTH == getMode() || Mode.PULL_UP_TO_REFRESH == getMode()) {
+		  lastVisiblePosition += 1;
+		}
 
 		if (DEBUG) {
 			Log.d(LOG_TAG, "isLastItemVisible. Count: " + count + " Last Visible Pos: " + lastVisiblePosition);
 		}
 
-		if (count <= getNumberInternalViews()) {
+		if (count <= getNumberInternalViews() || lastVisiblePosition == count) {
 			return true;
 		} else if (lastVisiblePosition == count - 1) {
 
-			final int childIndex = lastVisiblePosition - mRefreshableView.getFirstVisiblePosition();
 			final View lastVisibleChild = mRefreshableView.getChildAt(childIndex);
 
 			if (lastVisibleChild != null) {
