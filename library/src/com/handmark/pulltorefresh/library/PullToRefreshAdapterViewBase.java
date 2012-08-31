@@ -37,9 +37,11 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 
 	static final boolean DEFAULT_SHOW_INDICATOR = true;
 
-	private int mSavedLastVisibleIndex = -1;
+  private int mSavedLastVisibleIndex = -1;
+  private int mSavedFirstVisibleIndex = -1;
 	private OnScrollListener mOnScrollListener;
-	private OnLastItemVisibleListener mOnLastItemVisibleListener;
+  private OnLastItemVisibleListener mOnLastItemVisibleListener;
+  private OnFirstItemVisibleListener mOnFirstItemVisibleListener;
 	private View mEmptyView;
 	private FrameLayout mRefreshableViewHolder;
 
@@ -105,6 +107,17 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 			}
 		}
 
+    // If we have a OnItemVisibleListener, do check...
+		if (null != mOnFirstItemVisibleListener) {
+      if (visibleItemCount > 0 && firstVisibleItem == 0) {
+        if (firstVisibleItem != mSavedFirstVisibleIndex) {
+          mSavedFirstVisibleIndex = firstVisibleItem;
+          mOnFirstItemVisibleListener.onFirstItemVisible();
+        }
+      }
+		}
+		
+		
 		// If we're showing the indicator, check positions...
 		if (getShowIndicatorInternal()) {
 			updateIndicatorViewsVisibility();
@@ -163,9 +176,13 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 		}
 	}
 
-	public final void setOnLastItemVisibleListener(OnLastItemVisibleListener listener) {
-		mOnLastItemVisibleListener = listener;
-	}
+  public final void setOnLastItemVisibleListener(OnLastItemVisibleListener listener) {
+    mOnLastItemVisibleListener = listener;
+  }
+
+  public final void setOnFirstItemVisibleListener(OnFirstItemVisibleListener listener) {
+    mOnFirstItemVisibleListener = listener;
+  }
 
 	public final void setOnScrollListener(OnScrollListener listener) {
 		mOnScrollListener = listener;

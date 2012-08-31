@@ -1025,22 +1025,39 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout {
 	// Inner and Anonymous Classes
 	// ===========================================================
 
-	/**
-	 * Simple Listener that allows you to be notified when the user has scrolled
-	 * to the end of the AdapterView. See (
-	 * {@link PullToRefreshAdapterViewBase#setOnLastItemVisibleListener}.
-	 * 
-	 * @author Chris Banes
-	 * 
-	 */
-	public static interface OnLastItemVisibleListener {
+  /**
+   * Simple Listener that allows you to be notified when the user has scrolled
+   * to the end of the AdapterView. See (
+   * {@link PullToRefreshAdapterViewBase#setOnLastItemVisibleListener}.
+   * 
+   * @author Chris Banes
+   * 
+   */
+  public static interface OnLastItemVisibleListener {
 
-		/**
-		 * Called when the user has scrolled to the end of the list
-		 */
-		public void onLastItemVisible();
+    /**
+     * Called when the user has scrolled to the end of the list
+     */
+    public void onLastItemVisible();
 
-	}
+  }
+  
+  /**
+   * Simple Listener that allows you to be notified when the user has scrolled
+   * to the start of the AdapterView. See (
+   * {@link PullToRefreshAdapterViewBase#setOnFirstItemVisibleListener}.
+   * 
+   * @author Gu Xiaoyu
+   * 
+   */
+  public static interface OnFirstItemVisibleListener {
+
+    /**
+     * Called when the user has scrolled to the start of the list
+     */
+    public void onFirstItemVisible();
+
+  }
 
 	/**
 	 * Simple Listener to listen for any callbacks to Refresh.
