@@ -25,14 +25,12 @@ import java.util.Map;
 import android.app.ExpandableListActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 
-public final class PullToRefreshExpandableListActivity extends ExpandableListActivity {
+public class PullToRefreshExpandableListActivity extends ExpandableListActivity {
 	private static final String KEY = "key";
 	private LinkedList<String> mListItems, mGroupItems;
 	private PullToRefreshExpandableListView mPullRefreshListView;
@@ -47,9 +45,9 @@ public final class PullToRefreshExpandableListActivity extends ExpandableListAct
 		mPullRefreshListView = (PullToRefreshExpandableListView) findViewById(R.id.pull_refresh_expandable_list);
 
 		// Set a listener to be invoked when the list should be refreshed.
-		mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ExpandableListView>() {
+		mPullRefreshListView.setOnRefreshListener(new OnRefreshListener() {
 			@Override
-			public void onRefresh(PullToRefreshBase<ExpandableListView> refreshView) {
+			public void onRefresh() {
 				// Do work to refresh the list here.
 				new GetDataTask().execute();
 			}

@@ -22,7 +22,7 @@ import android.webkit.WebViewClient;
 
 import com.handmark.pulltorefresh.library.PullToRefreshWebView;
 
-public final class PullToRefreshWebViewActivity extends Activity {
+public class PullToRefreshWebViewActivity extends Activity {
 
 	PullToRefreshWebView mPullRefreshWebView;
 	WebView mWebView;

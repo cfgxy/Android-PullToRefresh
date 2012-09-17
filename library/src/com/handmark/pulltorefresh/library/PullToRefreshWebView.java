@@ -23,12 +23,13 @@ import android.webkit.WebView;
 
 public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
 
-	private static final OnRefreshListener<WebView> defaultOnRefreshListener = new OnRefreshListener<WebView>() {
+	private final OnRefreshListener defaultOnRefreshListener = new OnRefreshListener() {
 
 		@Override
-		public void onRefresh(PullToRefreshBase<WebView> refreshView) {
-			refreshView.getRefreshableView().reload();
+		public void onRefresh() {
+			mRefreshableView.reload();
 		}
+
 	};
 
 	private final WebChromeClient defaultWebChromeClient = new WebChromeClient() {
