@@ -30,7 +30,7 @@ import com.handmark.pulltorefresh.library.internal.LoadingLayout;
 
 public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView> {
 
-	private LoadingLayout mHeaderLoadingView;
+  private LoadingLayout mHeaderLoadingView;
 	private LoadingLayout mFooterLoadingView;
 
 	private FrameLayout mLvFooterLoadingFrame;
@@ -113,6 +113,10 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 		// Set it to this so it can be used in ListActivity/ListFragment
 		lv.setId(android.R.id.list);
 		return lv;
+	}
+
+	protected LoadingLayout getHeaderLoadingLayout() {
+	  return mHeaderLoadingView;
 	}
 
 	protected int getNumberInternalFooterViews() {
