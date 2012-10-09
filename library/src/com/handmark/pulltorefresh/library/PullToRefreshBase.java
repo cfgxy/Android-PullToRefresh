@@ -1118,7 +1118,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout {
 			mInterpolator = new AccelerateDecelerateInterpolator();
 		}
 
-		@Override
 		public void run() {
 
 			/**

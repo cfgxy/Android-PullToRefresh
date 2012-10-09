@@ -67,7 +67,6 @@ public class PullToRefreshGridView extends PullToRefreshAdapterViewBase<GridView
 			PullToRefreshGridView.this.setEmptyView(emptyView);
 		}
 
-		@Override
 		public void setEmptyViewInternal(View emptyView) {
 			super.setEmptyView(emptyView);
 		}

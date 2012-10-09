@@ -104,7 +104,6 @@ public class IndicatorLayout extends FrameLayout implements AnimationListener {
 		startAnimation(mInAnim);
 	}
 
-	@Override
 	public void onAnimationEnd(Animation animation) {
 		if (animation == mOutAnim) {
 			mArrowImageView.clearAnimation();
@@ -116,12 +115,10 @@ public class IndicatorLayout extends FrameLayout implements AnimationListener {
 		clearAnimation();
 	}
 
-	@Override
 	public void onAnimationRepeat(Animation animation) {
 		// NO-OP
 	}
 
-	@Override
 	public void onAnimationStart(Animation animation) {
 		setVisibility(View.VISIBLE);
 	}

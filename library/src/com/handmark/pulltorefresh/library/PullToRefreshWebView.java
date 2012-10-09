@@ -25,7 +25,6 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
 
 	private final OnRefreshListener defaultOnRefreshListener = new OnRefreshListener() {
 
-		@Override
 		public void onRefresh() {
 			mRefreshableView.reload();
 		}
